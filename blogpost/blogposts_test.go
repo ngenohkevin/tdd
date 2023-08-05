@@ -12,6 +12,6 @@ func TestNewBlogPosts(t *testing.T) {
 	}
 	posts := blogposts.NewPostsFromFs(fs)
 	if len(posts) != len(fs) {
-		t.Errorf("got %d")
+		t.Errorf("got %d posts, wanted %d posts", len(posts), len(fs))
 	}
 }
