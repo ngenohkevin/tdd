@@ -5,7 +5,8 @@ import (
 	"io/fs"
 )
 
-type Posts struct {
+type Post struct {
+	Title string
 }
 
 type StubFailingFS struct {
@@ -15,11 +16,11 @@ func (s StubFailingFS) Open(name string) (fs.File, error) {
 	return nil, errors.New("oh no, i always fail")
 }
 
-func NewPostsFromFS(filesystem fs.FS) ([]Posts, error) {
+func NewPostsFromFS(filesystem fs.FS) ([]Post, error) {
 	dir, _ := fs.ReadDir(filesystem, ".")
-	var posts []Posts
+	var posts []Post
 	for range dir {
-		posts = append(posts, Posts{})
+		posts = append(posts, Post{})
 	}
 	return posts, nil
 }
