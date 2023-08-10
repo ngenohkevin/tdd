@@ -7,6 +7,11 @@ import (
 	"io/fs"
 )
 
+const (
+	titleSeparator       = "Title: "
+	descriptionSeparator = "Description: "
+)
+
 type Post struct {
 	Title       string
 	Description string
@@ -57,8 +62,8 @@ func newPost(postFile io.Reader) (Post, error) {
 		return scanner.Text()
 	}
 
-	title := readLine()[7:]
-	description := readLine()[13:]
+	title := readLine()[len(titleSeparator):]
+	description := readLine()[len(descriptionSeparator):]
 
 	return Post{Title: title, Description: description}, nil
 }
