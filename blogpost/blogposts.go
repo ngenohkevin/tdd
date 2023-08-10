@@ -40,7 +40,12 @@ func getPost(fileSystem fs.FS, fileName string) (Post, error) {
 	if err != nil {
 		return Post{}, err
 	}
-	defer postFile.Close()
+	defer func(postFile fs.File) {
+		err := postFile.Close()
+		if err != nil {
+
+		}
+	}(postFile)
 	return newPost(postFile)
 }
 
