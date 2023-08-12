@@ -2,7 +2,6 @@ package blogposts
 
 import (
 	"bufio"
-	"errors"
 	"io"
 	"io/fs"
 	"strings"
@@ -21,9 +20,9 @@ type Post struct {
 type StubFailingFS struct {
 }
 
-func (s StubFailingFS) Open(name string) (fs.File, error) {
-	return nil, errors.New("oh no, i always fail")
-}
+//func (s StubFailingFS) Open(name string) (fs.File, error) {
+//	return nil, errors.New("oh no, i always fail")
+//}
 
 func NewPostsFromFS(fileSystem fs.FS) ([]Post, error) {
 	dir, err := fs.ReadDir(fileSystem, ".")
