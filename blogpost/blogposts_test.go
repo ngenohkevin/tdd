@@ -6,7 +6,7 @@ import (
 	"testing"
 	"testing/fstest"
 )
-//Blog postspo
+
 func TestNewBlogPosts(t *testing.T) {
 	const (
 		firstBody = `Title: Post 1
